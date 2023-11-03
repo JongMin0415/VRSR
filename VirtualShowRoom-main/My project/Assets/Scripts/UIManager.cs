@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject ShowroomPanel;
     public GameObject ShopPanel;
     public GameObject QRPanel;
-
+    public GameObject SettingPanel;
 
     public void ShowLoginPanel()
     {
@@ -58,10 +58,17 @@ public class UIManager : MonoBehaviour
         ShopPanel.SetActive(false);
     }
 
+    public void ShowSettingPanel()
+    {
+        MainPanel.SetActive(false);
+        SettingPanel.SetActive(true);
+    }
+
     public void BackToMainPanel()
     {
         ShopPanel.SetActive(false);
         MainPanel.SetActive(true);
+        SettingPanel.SetActive(false);
     }
 
     public void BackToShopPanel()
@@ -69,6 +76,7 @@ public class UIManager : MonoBehaviour
         ShopPanel.SetActive(true);
         QRPanel.SetActive(false);
     }
+
 
     public void ExitShowroom()
     {
