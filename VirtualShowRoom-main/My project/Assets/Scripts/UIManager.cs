@@ -5,48 +5,79 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject[] panels; // 모든 패널을 저장할 배열
+    public GameObject StartPanel;
+    public GameObject loginPanel;
+    public GameObject MainPanel;
+    public GameObject signupPanel;
+    public GameObject leftMenuPanel;
+    public GameObject ShowroomPanel;
+    public GameObject ShopPanel;
+    public GameObject QRPanel;
 
-    private int currentPanelIndex = 0; // 현재 활성화된 패널의 인덱스
 
-    // 시작 시 첫 번째 패널을 활성화
-    private void Start()
+    public void ShowLoginPanel()
     {
-        ShowPanel(currentPanelIndex);
+        // 로그인 패널 표시
+        StartPanel.SetActive(false);
+        loginPanel.SetActive(true);
     }
 
-    // 다음 화면으로 이동하는 함수
-    public void NextPanel()
+    public void ShowMainPanel()
     {
-        // 현재 패널 비활성화
-        panels[currentPanelIndex].SetActive(false);
-
-        // 다음 패널 인덱스 증가
-        currentPanelIndex = (currentPanelIndex + 1) % panels.Length;
-
-        // 다음 패널 활성화
-        panels[currentPanelIndex].SetActive(true);
+        loginPanel.SetActive(false);
+        MainPanel.SetActive(true);
     }
 
-    // 이전 화면으로 이동하는 함수
-    public void PreviousPanel()
+    public void ShowSignupPanel()
     {
-        // 현재 패널 비활성화
-        panels[currentPanelIndex].SetActive(false);
-
-        // 이전 패널 인덱스 계산 (반복)
-        currentPanelIndex = (currentPanelIndex - 1 + panels.Length) % panels.Length;
-
-        // 이전 패널 활성화
-        panels[currentPanelIndex].SetActive(true);
+        // 회원가입 패널 표시
+        loginPanel.SetActive(false);
+        signupPanel.SetActive(true);
     }
 
-    // 특정 인덱스의 패널을 보여주는 함수
-    private void ShowPanel(int index)
+    public void BackToLoginPanel()
     {
-        for (int i = 0; i < panels.Length; i++)
-        {
-            panels[i].SetActive(i == index);
-        }
+        loginPanel.SetActive(true);
+        signupPanel.SetActive(false);
+    }
+
+    public void ShowShowroomPanel()
+    {
+        leftMenuPanel.SetActive(false);
+        ShowroomPanel.SetActive(true);
+    }
+    public void ShowShopPanel()
+    {
+        MainPanel.SetActive(false);
+        ShopPanel.SetActive(true);
+    }
+
+    public void ShowQRPanel()
+    {
+        QRPanel.SetActive(true);
+        ShopPanel.SetActive(false);
+    }
+
+    public void BackToMainPanel()
+    {
+        ShopPanel.SetActive(false);
+        MainPanel.SetActive(true);
+    }
+
+    public void BackToShopPanel()
+    {
+        ShopPanel.SetActive(true);
+        QRPanel.SetActive(false);
+    }
+
+    public void ExitShowroom()
+    {
+        ShowroomPanel.SetActive(false);
+        leftMenuPanel.SetActive(true);
+    }
+
+    public void ExitMenu()
+    {
+        MainPanel.SetActive(false);
     }
 }
